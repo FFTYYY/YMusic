@@ -1,0 +1,16 @@
+{
+  "name": "ymusic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ymusic.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "YYY",
+  "license": "MIT",
+  "dependencies": {
+    "tone": "^14.7.77",
+    "vexflow": "^3.0.9"
+  }
+}
