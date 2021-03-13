@@ -1,5 +1,3 @@
-//version：21-03-13
-
 import * as Tone from "tone"
 import Vex from "vexflow"
 
@@ -540,10 +538,12 @@ function ymusic_draw_music_onebar(ctx , meta_info, note_info, offset_w , offset_
 		)		
 	}
 
-	var beams = VF.Beam.generateBeams(notes_to_render)
+	if(meta_info.stave_type == "五线")
+		var beams = VF.Beam.generateBeams(notes_to_render)
 	VF.Formatter.FormatAndDraw(ctx, stave, notes_to_render)
 	VF.Formatter.FormatAndDraw(ctx, stave, texts_to_render)
-	beams.forEach(function(b) {b.setContext(ctx).draw()})
+	if(meta_info.stave_type == "五线")
+		beams.forEach(function(b) {b.setContext(ctx).draw()})
 }
 
 function ymusic_parse(innertext , width , width_off , height){

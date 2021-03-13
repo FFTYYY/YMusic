@@ -10,7 +10,7 @@ YMusic是一个用来在网页上显示和播放乐谱的javascript库。你可�
 
 ## 使用
 
-直接在html中引入：`<script src = "https://unpkg.com/ymusic@1.0.6/ymusic.js"></script>`
+直接在html中引入：`<script src = "https://unpkg.com/ymusic@1.0.8/ymusic.js"></script>`
 就可以开始使用。
 
 ### 启动YMusic渲染
