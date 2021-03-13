@@ -17,7 +17,7 @@ function ymusic_decode(content){
 }
 
 
-let ymusic_sampler = undefined
+var ymusic_sampler = undefined
 
 function ymusic_warning(str = ""){
 	console.log("错误：" + str.toString())
@@ -86,14 +86,14 @@ function ymusic_play_music(bar_notes , bar_metas , speed){
 		return
 	}
 
-	to_play = []
+	let to_play = []
 
 	for(let bar_idx in bar_notes){
 	
 		let notes = bar_notes[bar_idx]
 		let metas = bar_metas[bar_idx]
 
-		accidentials = {} //维护当前时间哪些音要升降。比如 accidentials[["C","5"]] = "b"
+		let accidentials = {} //维护当前时间哪些音要升降。比如 accidentials[["C","5"]] = "b"
 						  //在小节开头这个数组会被自动重置
 
 		for(let x of notes){
@@ -155,7 +155,7 @@ function ymusic_play_music(bar_notes , bar_metas , speed){
 		}
 	}
 
-	semibreve = speed //一个音符，一秒
+	let semibreve = speed //一个音符的时间
 
 	for(let i = to_play.length-1;i >= 0;i--){
 		if(to_play[i].keys.length <= 0){
@@ -323,7 +323,7 @@ function ymusic_parse_notes(note_info , metas){
 		let modifiers = []
 
 		//解析所有提供的信息
-		keys = note.split("、")
+		let keys = note.split("、")
 		let note_cnt = 0 //当前是第几个音符
 		for(let key of keys){
 			key = key.trim()
@@ -400,7 +400,7 @@ function ymusic_parse_meta(meta_info , width , width_off , height){
 		一个列表，描述各种谱相关的信息
 	*/
 	// 获取元信息
-	meta_info 		= meta_info.trim().split("，")
+	meta_info 	= meta_info.trim().split("，")
 	let clef 	   	= meta_info[0].trim() //谱号
 	let beat_value 	= parseInt( meta_info[2].trim() ) //时值
 	let beat_num   	= parseInt( meta_info[3].trim() ) //拍数
@@ -450,13 +450,13 @@ function ymusic_draw_music_onebar(ctx , meta_info, note_info, offset_w , offset_
 		offset：绘图的x坐标偏移
 		last_meta：上一个小节的谱信息（用来确定是否需要重新绘制谱号等）
 	*/
-	VF = Vex.Flow
+	let VF = Vex.Flow
 
 	// ---------- 画谱 ----------
 	let meta = meta_info
 
 	// 创建stave
-	stave = undefined
+	let stave = undefined
 	if(meta.stave_type == "五线"){
 		stave = new VF.Stave(offset_w , offset_h, meta.width, {num_lines : meta.num_lines})
 
@@ -632,7 +632,7 @@ function ymusic_draw(meta_infos , note_infos , fillcolor , backfillcolor){
 
 	let offset_w = 0
 	let offset_h = 0
-	for(i in meta_infos){
+	for(let i in meta_infos){
 		let meta_info = meta_infos[i]
 		let note_info = note_infos[i]
 
@@ -684,7 +684,7 @@ function ymusic_draw_music(content , config){
 	element.innerHTML = `<span class = "ymusic ${special_class}">${render_container.innerHTML}</span>`
 
 	//创建播放音乐的按钮
-	play = [music_notes , meta_infos , c.speed]
+	let play = [music_notes , meta_infos , c.speed]
 
 	return [element , special_class , play]
 }
@@ -709,7 +709,7 @@ function m_start_ymusic(element , config , target_tags , flag){
 		flag = true
 
 	if(flag && element.innerHTML != undefined){
-		innerhtml = element.innerHTML
+		let innerhtml = element.innerHTML
 
 		let classes = []
 		let play_infos = []
@@ -724,7 +724,7 @@ function m_start_ymusic(element , config , target_tags , flag){
 			content = ymusic_decode(content) //消除诸如&nasp;之类的符号
 
 			let now_config = config
-			further_conf = content.match(/\{[\s\S]*?\}/) //匹配一段json格式数据
+			let further_conf = content.match(/\{[\s\S]*?\}/) //匹配一段json格式数据
 			if(further_conf != undefined){
 				try{
 					further_conf = JSON.parse(further_conf[0])
@@ -765,14 +765,14 @@ function m_start_ymusic(element , config , target_tags , flag){
 		m_start_ymusic(x , config , target_tags , flag)
 }
 
-function init_ymusic_sampler(files , baseurl){
+export function init_ymusic_sampler(files , baseurl){
 	ymusic_sampler = new Tone.Sampler({
 		urls: files,
 		baseUrl: baseurl,
 	}).toDestination()
 }
 
-function start_ymusic(config , target_tags = ["P"]){
+export function start_ymusic(config = {}, target_tags = ["P"]){
 
 	config = autoconfig(config)
 	m_start_ymusic(document , config , target_tags , false)
