@@ -8,6 +8,8 @@ YMusic是一个用来在网页上显示和播放乐谱的javascript库。你可�
 将被渲染成：
 <center><img width = 800 height = 107 src = "https://raw.githubusercontent.com/FFTYYY/YMusic/main/readme_imgs/pic2.png?token=ACSMAJYVZKH3CF7II4IVZPDAKYEIA" /></center>
 
+我做了一个可交互demo，可以玩一玩：[Play Ground](https://fftyyy.github.io/YMusic/)
+
 ## 使用
 
 直接在html中引入：`<script src = "https://unpkg.com/ymusic@1.0.8/ymusic.js"></script>`
@@ -169,3 +171,9 @@ A：现在还没有这功能，以后有空会加。
 Q：推弦/扫弦/琶音/颤音/闷音/制音/滑音/击勾弦...记号？
 
 A：都没有
+
+---
+
+Q：能同时播放多个谱子吗？
+
+A：现在还没有这功能，以后有空会加。
