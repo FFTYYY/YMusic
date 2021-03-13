@@ -3,6 +3,7 @@
 import * as Tone from "tone"
 import Vex from "vexflow"
 
+//version：21-03-13
 
 function unsub_str(s,l,r){
 	//从一个字符串抠出来一个子串
@@ -536,18 +537,13 @@ function ymusic_draw_music_onebar(ctx , meta_info, note_info, offset_w , offset_
 			.setLine(nt.posi+3) // 为了让第一根线上方的空白刚好是0
 			.setStave(stave)
 			.setJustification(Vex.Flow.TextNote.Justification.LEFT)
-		)
+		)		
 	}
 
-	let voice_music = new VF.Voice({num_beats: meta.beat_num ,  beat_value: meta.beat_value})
-	let voice_text  = new VF.Voice({num_beats: meta.beat_num ,  beat_value: meta.beat_value})
-	voice_music.addTickables(notes_to_render)
-	voice_text .addTickables(texts_to_render)
-
-	let formatter = new VF.Formatter().joinVoices([voice_music , voice_text])
-	formatter.format([voice_music , voice_text], meta.width - 30) //TODO: width_off
-	voice_music.draw(ctx, stave)	
-	voice_text .draw(ctx, stave)
+	var beams = VF.Beam.generateBeams(notes_to_render)
+	VF.Formatter.FormatAndDraw(ctx, stave, notes_to_render)
+	VF.Formatter.FormatAndDraw(ctx, stave, texts_to_render)
+	beams.forEach(function(b) {b.setContext(ctx).draw()})
 }
 
 function ymusic_parse(innertext , width , width_off , height){
