@@ -4,7 +4,7 @@ YMusic是一个用来在网页上显示和播放乐谱的javascript库。你可�
 
 
 一个例子：
-![](./readme_imgs/pic1.png")
+![](https://github.com/FFTYYY/YMusic/blob/main/readme_imgs/pic1.png)
 
 ## 使用
 
