@@ -1,37 +1,67 @@
-<body>
-	<p>
-		【乐谱开始】
-			【高，5++-，4，4】【
-				|        B/4 [8r]
-				| 文：让、A/3 [8]
-				| 文：我、C/4 [8] 
-				| 文：们、D/4 [8] 
-				| 文：荡、E/4 [4] | E/4 [8] 
-				| 文：起、G/4 [8]
-			】
-			【高，5++-，4，4】【 
-				| 文：双、E/4 [8] | C/4 [8] | D/4 [4]  
-				| 文：桨、A/3 [2]                           
-			】
-		【乐谱结束】
-	</p>
-	<p>
-		【乐谱开始】
-			【吉他，6-，4，4】【
-				|        7-  [8]
-				| 文：让、4-2 [8]
-				| 文：我、3-0 [8] 
-				| 文：们、3-2 [8] 
-				| 文：荡、2-0 [4] | 2-0 [8] 
-				| 文：起、2-3 [8]
-			】
-			【吉他，6-，4，4】【 
-				| 文：双、2-0 [8] | 3-0 [8] | 3-2 [4]  
-				| 文：桨、4-2 [2]                           
-			】
-		【乐谱结束】
-	</p>
+<head>
+	<style>
+		.the_text{
+			width: 1200px;
+			height: 300px;
+			background-color: #EEEEFF;
+			font-size: 17px;
+		}
+		.the_button{
+			position: relative;
+			margin: 20px;
+			background-color: #FFCCCC;
+			color: #111111;
+			border: 0;
+			height: 30px;
+			width: 10%;
+			left: 80%;			
+			transition: 0.3s;
 
+		}
+		.the_button:hover{
+			background-color: #333333;
+			color: #AAAAAA;
+			transition: 0.3s;
+		}
+		.ymusic svg{
+			background-color: #00000000;
+			color: #00000000;
+			transition: 0.3s;
+		}
+		.ymusic svg:hover{
+			background-color: #FFCCFF;
+			color: #CCCCFF;
+			transition: 0.3s;
+		}
+
+	</style>
+</head>
+
+<body>
+
+<center>
+<textarea class = "the_text">
+【乐谱开始】
+	【高，5++-，4，4】【
+		|        B/4 [8r]
+		| 文：让、A/3 [8]
+		| 文：我、C/4 [8] 
+		| 文：们、D/4 [8] 
+		| 文：荡、E/4 [4] | E/4 [8] 
+		| 文：起、G/4 [8]
+	】
+	【高，5++-，4，4】【 
+		| 文：双、E/4 [8] | C/4 [8] | D/4 [4]  
+		| 文：桨、A/3 [2]                           
+	】
+【乐谱结束】
+</textarea>
+</center>
+
+<button class = "the_button">转换！</button>
+
+<center><p class = "the_p"></p></center>
+<center><p>（↑点击上面这个试试！）</p></center>
 </body>
 
 <script src = "https://unpkg.com/ymusic@1.0.7/ymusic.js"></script>
@@ -46,7 +76,18 @@
 		},
 		baseurl = "https://tonejs.github.io/audio/salamander/",
 	)
-	
-	YMusic.start_ymusic({width_off : 70 , speed : 3} , ["P"])
+</script>
+
+<script>
+	var the_text   = document.getElementsByClassName("the_text")[0]
+	var the_p      = document.getElementsByClassName("the_p")[0]
+	var the_button = document.getElementsByClassName("the_button")[0]
+
+	the_button.onclick = function(){
+		the_p.innerText = the_text.value
+		YMusic.start_ymusic({width_off : 70 , speed : 3} , ["P"])
+	}
+
+	the_button.click() //一来先转换一次
 
 </script>
