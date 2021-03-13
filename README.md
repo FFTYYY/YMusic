@@ -4,9 +4,9 @@ YMusic是一个用来在网页上显示和播放乐谱的javascript库。你可�
 
 
 一个例子：<br/>
-<center><img width = 600 height = 90 src = "https://raw.githubusercontent.com/FFTYYY/YMusic/main/readme_imgs/pic1.png?token=ACSMAJ5MSUPDCUHD53BUTA3AKXYDM"></img></center><br/>
+<center><img width = 600 height = 93 src = "https://raw.githubusercontent.com/FFTYYY/YMusic/main/readme_imgs/pic1.png?token=ACSMAJ5MSUPDCUHD53BUTA3AKXYDM" /></center><br/>
 将被渲染成：
-<图片>
+<center><img width = 800 height = 107 src = "https://raw.githubusercontent.com/FFTYYY/YMusic/main/readme_imgs/pic2.png?token=ACSMAJYVZKH3CF7II4IVZPDAKYEIA" /></center>
 
 ## 使用
 
@@ -53,7 +53,7 @@ YMusic.init_ymusic_sampler(
 		A4: "A4.mp3" , 
 		A5: "A5.mp3" , 
 	} , 
-	"https://github.com/FFTYYY/YMusic/blob/main/samples/"
+	"https://tonejs.github.io/audio/salamander/",
 )
 ```
 
@@ -120,7 +120,9 @@ YMusic.init_ymusic_sampler(
 ```
 
 渲染效果：
-<图片>
+<center><img width = 800 height = 245 src = "https://raw.githubusercontent.com/FFTYYY/YMusic/main/readme_imgs/pic3.png?token=ACSMAJ7H4NNYEJNJSFUNFFLAKYFBS"/></center>
+
+在/examples/index.html中可以看到完整的示例。
 
 ## 注释
 
