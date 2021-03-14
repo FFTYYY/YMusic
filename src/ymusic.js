@@ -323,7 +323,6 @@ function ymusic_parse_notes(note_info , metas){
 
 		//解析所有提供的信息
 		let keys = note.split("、")
-		let note_cnt = 0 //当前是第几个音符
 		for(let key of keys){
 			key = key.trim()
 			if(key == "") //key是空的
@@ -351,7 +350,7 @@ function ymusic_parse_notes(note_info , metas){
 					parsed_note_keys.push(key[0])
 
 					if(key.length > 1){
-						modifiers.push({type: "accidental" , value: key[1].trim() , idx: note_cnt})
+						modifiers.push({type: "accidental" , value: key[1].trim() , idx: parsed_note_keys.length - 1})
 					}
 
 				}
@@ -377,13 +376,12 @@ function ymusic_parse_notes(note_info , metas){
 					parsed_note_keys.push({str:str , fret:fret})
 				}
 			}
-			note_cnt += 1
 		}
 
 		parsed_notes.push({duration: duration , keys: parsed_note_keys , modifiers: modifiers})
 		parsed_texts.push({duration: duration , text: parsed_text , posi: parsed_text_pos})
 	}
-
+	console.log(parsed_notes)
 	return [ parsed_notes , parsed_texts ]
 }
 
@@ -510,7 +508,7 @@ function ymusic_draw_music_onebar(ctx , meta_info, note_info, offset_w , offset_
 			if(mod.type == "accidental")
 			{
 				let acc = new VF.Accidental(mod.value)
-				the_note.addAccidental(mod.idx , acc)
+				the_note = the_note.addAccidental(mod.idx , acc)
 			}
  
 		}
