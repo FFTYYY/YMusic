@@ -4,9 +4,9 @@ YMusic是一个用来在网页上显示和播放乐谱的javascript库。你可�
 
 
 举个例子：<br/>
-<center><img width = 600 height = 93 src = "https://raw.githubusercontent.com/FFTYYY/YMusic/main/readme_imgs/pic1.png?token=ACSMAJ5MSUPDCUHD53BUTA3AKXYDM" /></center><br/>
+<center><img width = 600 height = 93 src = "readme_imgs/pic1.png" /></center><br/>
 将被渲染成：
-<center><img width = 800 height = 107 src = "https://raw.githubusercontent.com/FFTYYY/YMusic/main/readme_imgs/pic2.png?token=ACSMAJYVZKH3CF7II4IVZPDAKYEIA" /></center>
+<center><img width = 800 height = 107 src = "readme_imgs/pic2.png" /></center>
 
 我做了一个可交互demo，可以玩一玩：[Play Ground](https://fftyyy.github.io/YMusic/)
 
